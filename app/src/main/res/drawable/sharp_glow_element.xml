@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+  <!-- පින්තූරයේ තියෙන තද රවුම් ගතිය නැති කරලා ලස්සන Glow එකක් ගන්න -->
+  <!-- මම මෙහි radius එක 500dp දක්වා වැඩි කළා සහ centerColor එකක් එකතු කළා -->
+  <gradient
+      android:type="radial"
+      android:gradientRadius="500dp"
+      android:startColor="#4017C3B2"
+      android:centerColor="#1517C3B2"
+      android:endColor="#0017C3B2" />
+
+</shape>

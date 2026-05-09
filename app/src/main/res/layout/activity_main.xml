@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/mainViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomNavCard"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#1A2B2E"
+        app:cardCornerRadius="35dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/mainBottomNavBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:id="@+id/tabMainJoystick"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:contentDescription="Joystick පිටුව"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:tint="#80FFFFFF" /> <ImageView
+            android:id="@+id/tabMainLearning"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:contentDescription="Learning පිටුව"
+            android:src="@android:drawable/ic_menu_gallery"
+            app:tint="#80FFFFFF" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#17C3B2"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="0dp"
+                android:layout_marginHorizontal="6dp">
+
+                <ImageView
+                    android:id="@+id/tabMainHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:contentDescription="Home පිටුව"
+                    android:src="@android:drawable/ic_menu_gallery"
+                    app:tint="#000000" /> </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/tabMainCommunity"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:contentDescription="Community පිටුව"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:tint="#80FFFFFF" />
+
+            <ImageView
+                android:id="@+id/tabMainShop"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:contentDescription="Shop පිටුව"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:tint="#80FFFFFF" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
