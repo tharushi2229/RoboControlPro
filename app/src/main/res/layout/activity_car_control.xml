@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121e1f"
+    android:paddingStart="24dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="36dp"
+    android:paddingBottom="36dp">
+
+    <!-- Top Left: Driving Triangles (Up & Down Stacked Vertically) -->
+    <LinearLayout
+        android:id="@+id/driveControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnForward"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:src="@drawable/ic_triangle_up"
+            android:contentDescription="Forward"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+        <ImageView
+            android:id="@+id/btnBackward"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/ic_triangle_down"
+            android:contentDescription="Backward"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+
+    <!-- Top Right: Back Arrow (Upward Arrow ↑) -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_arrow_top_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Back"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+    <!-- Bottom Left: Steering Triangles (Left & Right Side-by-Side) -->
+    <LinearLayout
+        android:id="@+id/steerControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/btnSteerLeft"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:src="@drawable/ic_triangle_left"
+            android:contentDescription="Steer Left"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+        <ImageView
+            android:id="@+id/btnSteerRight"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_triangle_right"
+            android:contentDescription="Steer Right"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+
+    <!-- Center Section: 2 Columns x 4 Rows (8 Buttons - 100% Unchanged Position) -->
+    <TableLayout
+        android:id="@+id/centerGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/driveControls"
+        app:layout_constraintBottom_toTopOf="@id/steerControls">
+
+        <!-- Row 1 -->
+        <TableRow android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnParkingBrake"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Parking Brake"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:src="@drawable/ic_truck_parking_brake" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnHeadlights"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_headlights"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Headlights"/>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <!-- Row 2 -->
+        <TableRow android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnDiffLock"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_diff_lock"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Differential Lock"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnHorn"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_air_horn"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Air Horn"/>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <!-- Row 3 -->
+        <TableRow android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnDumpUp"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_dump_up"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Dump Up"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnBeamUp"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_beam_up"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Beam Up"/>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <!-- Row 4 -->
+        <TableRow android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnDumpDown"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_dump_down"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Dump Down"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnBeamDown"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#A0A5AA"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_truck_beam_down"
+                    android:scaleType="fitCenter"
+                    android:rotation="90"
+                    android:contentDescription="Beam Down"/>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+    </TableLayout>
+
+    <!-- Speed Value Text (Rotated 90 Degrees Right, Larger & Bolder) -->
+    <TextView
+        android:id="@+id/txtSpeedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPEED: 255"
+        android:textColor="#17C3B2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:rotation="90"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintStart_toEndOf="@id/centerGrid"
+        app:layout_constraintEnd_toStartOf="@id/speedControllerContainer"
+        app:layout_constraintTop_toTopOf="@id/centerGrid"
+        app:layout_constraintBottom_toBottomOf="@id/centerGrid"/>
+
+    <!-- Custom Vertical Speed Controller (Unchanged Position) -->
+    <LinearLayout
+        android:id="@+id/speedControllerContainer"
+        android:layout_width="48dp"
+        android:layout_height="340dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/centerGrid"
+        app:layout_constraintBottom_toBottomOf="@id/centerGrid">
+
+        <SeekBar
+            android:id="@+id/sliderSpeed"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:rotation="270"
+            android:max="255"
+            android:progress="255"
+            android:progressDrawable="@drawable/bg_slider_track"
+            android:thumb="@drawable/bg_slider_thumb"
+            android:splitTrack="false"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

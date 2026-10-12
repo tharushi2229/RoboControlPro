@@ -38,56 +38,59 @@
             android:weightSum="5"
             android:paddingHorizontal="12dp">
 
-            <ImageView
-                android:id="@+id/tabMainJoystick"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:contentDescription="Joystick පිටුව"
-                android:src="@android:drawable/ic_menu_gallery"
-                app:tint="#80FFFFFF" /> <ImageView
-            android:id="@+id/tabMainLearning"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_weight="1"
-            android:contentDescription="Learning පිටුව"
-            android:src="@android:drawable/ic_menu_gallery"
-            app:tint="#80FFFFFF" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#17C3B2"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="0dp"
-                android:layout_marginHorizontal="6dp">
-
-                <ImageView
-                    android:id="@+id/tabMainHome"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="12dp"
-                    android:contentDescription="Home පිටුව"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:tint="#000000" /> </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/tabMainCommunity"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:contentDescription="Community පිටුව"
-                android:src="@android:drawable/ic_menu_gallery"
-                app:tint="#80FFFFFF" />
-
+            <!-- 1. Shop Tab -->
             <ImageView
                 android:id="@+id/tabMainShop"
                 android:layout_width="0dp"
-                android:layout_height="28dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:contentDescription="Shop පිටුව"
-                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_marginHorizontal="4dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_shop"
+                app:tint="#80FFFFFF" />
+
+            <!-- 2. Community Tab -->
+            <ImageView
+                android:id="@+id/tabMainCommunity"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_community"
+                app:tint="#80FFFFFF" />
+
+            <!-- 3. Home Tab -->
+            <ImageView
+                android:id="@+id/tabMainHome"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_home"
+                app:tint="#80FFFFFF" />
+
+            <!-- 4. Learning Tab -->
+            <ImageView
+                android:id="@+id/tabMainLearning"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_learning"
+                app:tint="#80FFFFFF" />
+
+            <!-- 5. Joystick Tab -->
+            <ImageView
+                android:id="@+id/tabMainJoystick"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_joystick"
                 app:tint="#80FFFFFF" />
 
         </LinearLayout>

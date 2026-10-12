@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="8dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/imgDragHandle"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        app:tint="#80FFFFFF"
+        android:layout_marginEnd="12dp"/>
+
+    <CheckBox
+        android:id="@+id/chkSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#17C3B2"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/txtLedName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="LED 01"
+        android:textColor="#CCCCCC"/>
+
+    <TextView
+        android:id="@+id/txtShortId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LED1"
+        android:textColor="#17C3B2"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="16dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchLed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

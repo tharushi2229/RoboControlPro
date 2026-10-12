@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="#1A2B2E"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtFeedbackTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_category_pill"
+                android:backgroundTint="#806200EE"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="Feature"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtFeedbackTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Add dark theme to code editor"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtFeedbackContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="The code playground should have a dark theme option..."
+            android:textColor="#80FFFFFF"
+            android:textSize="13sp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/txtFeedbackUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by Dev Team"
+                android:textColor="#80FFFFFF"
+                android:textSize="11sp"/>
+            <TextView
+                android:id="@+id/txtFeedbackTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="1 day ago"
+                android:textColor="#40FFFFFF"
+                android:textSize="11sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

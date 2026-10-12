@@ -1,6 +1,8 @@
 package com.darkbrotherz.rcrobocontrolpro
 
 import android.Manifest
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,7 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 
 class MainActivity : AppCompatActivity() {
 
-    // Bluetooth සහ Location අවසර ඉල්ලන Popup එක සෑදීම
+    // Bluetooth අවසර ඉල්ලන Popup එක සෑදීම
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
@@ -29,66 +31,125 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // අයිකන් 5 සඳහා විචල්‍යයන්
+    private lateinit var tabMainShop: ImageView
+    private lateinit var tabMainCommunity: ImageView
+    private lateinit var tabMainHome: ImageView
+    private lateinit var tabMainLearning: ImageView
+    private lateinit var tabMainJoystick: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ඇප් එක ඕපන් වෙද්දීම අවසර ඉල්ලන ෆන්ක්ෂන් එකට කතා කිරීම
         checkAndRequestPermissions()
 
         val viewPager = findViewById<ViewPager2>(R.id.mainViewPager)
-        val tabMainJoystick = findViewById<ImageView>(R.id.tabMainJoystick)
-        val tabMainLearning = findViewById<ImageView>(R.id.tabMainLearning)
-        val tabMainHome = findViewById<ImageView>(R.id.tabMainHome)
-        val tabMainCommunity = findViewById<ImageView>(R.id.tabMainCommunity)
-        val tabMainShop = findViewById<ImageView>(R.id.tabMainShop)
+        tabMainShop = findViewById(R.id.tabMainShop)
+        tabMainCommunity = findViewById(R.id.tabMainCommunity)
+        tabMainHome = findViewById(R.id.tabMainHome)
+        tabMainLearning = findViewById(R.id.tabMainLearning)
+        tabMainJoystick = findViewById(R.id.tabMainJoystick)
 
         viewPager.isUserInputEnabled = false
 
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int {
-                return 5
-            }
-
+            override fun getItemCount(): Int = 5
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
-                    0 -> Fragment()
-                    1 -> Fragment()
-                    2 -> JoystickFragment() // අපේ Joystick පිටුව
-                    3 -> Fragment()
-                    4 -> Fragment()
+                    0 -> ShopFragment()
+                    1 -> CommunityFragment()
+                    2 -> HomeFragment()
+                    3 -> LearningFragment()
+                    4 -> JoystickFragment()
                     else -> Fragment()
                 }
             }
         }
 
-        tabMainJoystick.setOnClickListener { viewPager.currentItem = 0 }
-        tabMainLearning.setOnClickListener { viewPager.currentItem = 1 }
-        tabMainHome.setOnClickListener { viewPager.currentItem = 2 }
-        tabMainCommunity.setOnClickListener { viewPager.currentItem = 3 }
-        tabMainShop.setOnClickListener { viewPager.currentItem = 4 }
+        tabMainShop.setOnClickListener { showComingSoon() }
+        tabMainCommunity.setOnClickListener { showComingSoon() }
+        tabMainHome.setOnClickListener { showComingSoon() }
+        tabMainLearning.setOnClickListener { showComingSoon() }
+        tabMainJoystick.setOnClickListener { viewPager.currentItem = 4 }
 
-        viewPager.currentItem = 2
+        // අයිකන් තාවකාලිකව අක්‍රීය කිරීම (Visual feedback)
+        disableTab(tabMainShop)
+        disableTab(tabMainCommunity)
+        disableTab(tabMainHome)
+        disableTab(tabMainLearning)
+
+        // පිටුව මාරු වෙද්දී අදාළ අයිකනය කොළ පාට කිරීම සඳහා
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                updateTabUI(position)
+            }
+        })
+
+        // ඇප් එක ඕපන් වෙද්දී Joystick (Game Controller) එක පෙන්වීම
+        viewPager.currentItem = 4
     }
 
-    // ෆෝන් එකේ Android වර්ෂන් එක බලලා හරියටම ඕනේ කරන අවසර ටික ඉල්ලීම
+    private fun showComingSoon() {
+        Toast.makeText(this, "Coming Soon in next update!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun disableTab(tab: ImageView) {
+        tab.alpha = 0.4f
+    }
+
+    // තෝරන පිටුව අනුව අයිකන් වල පාට වෙනස් කරන ෆන්ක්ෂන් එක
+    private fun updateTabUI(selectedPosition: Int) {
+
+        val selectedTab = when (selectedPosition) {
+            0 -> tabMainShop
+            1 -> tabMainCommunity
+            2 -> tabMainHome
+            3 -> tabMainLearning
+            4 -> tabMainJoystick
+            else -> tabMainHome
+        }
+
+        val allTabs = arrayOf(tabMainShop, tabMainCommunity, tabMainHome, tabMainLearning, tabMainJoystick)
+
+        for (tab in allTabs) {
+            if (tab == selectedTab) {
+                val activeBg = GradientDrawable()
+                activeBg.shape = GradientDrawable.RECTANGLE
+                activeBg.cornerRadius = 60f
+                activeBg.setColor(Color.parseColor("#17C3B2"))
+                // Add a green border (stroke) around the selected icon
+                activeBg.setStroke(4, Color.parseColor("#00FF00"))
+
+                tab.background = activeBg
+                tab.setColorFilter(Color.parseColor("#000000"))
+            } else {
+                tab.background = null
+                tab.setColorFilter(Color.parseColor("#80FFFFFF"))
+            }
+
+            // තාවකාලිකව අක්‍රීය කළ අයිකන සඳහා opacity අඩු කිරීම
+            if (tab == tabMainShop || tab == tabMainCommunity || tab == tabMainHome || tab == tabMainLearning) {
+                tab.alpha = 0.4f
+            } else {
+                tab.alpha = 1.0f
+            }
+        }
+    }
+
     private fun checkAndRequestPermissions() {
         val permissionsToRequest = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            // Android 12 සහ ඊට අලුත් ෆෝන් සඳහා
             arrayOf(
                 Manifest.permission.BLUETOOTH_CONNECT,
                 Manifest.permission.BLUETOOTH_SCAN,
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
         } else {
-            // පරණ ෆෝන් සඳහා
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             )
         }
-
-        // Popup එක තිරය මත පෙන්වීම
         requestPermissionLauncher.launch(permissionsToRequest)
     }
 }

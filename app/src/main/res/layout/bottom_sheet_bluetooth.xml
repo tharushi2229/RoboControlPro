@@ -7,26 +7,15 @@
     android:padding="20dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bluetooth උපාංගය තෝරන්න"
+        android:text="Select Bluetooth Device"
         android:textColor="#17C3B2"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#33FFFFFF"
         android:layout_marginBottom="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBluetoothDevices"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:clipToPadding="false"
-        android:paddingBottom="20dp"/>
-
-</LinearLayout>
+        android:layout_height="300dp" /> </LinearLayout>
